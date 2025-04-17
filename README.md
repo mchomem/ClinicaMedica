@@ -13,3 +13,6 @@ O projeto utilizar base de dados para MySql.
 ## Relatório de agendamentos
 
 ![Relatório de agendamentos](/docs/images/report-agendamento.png)
+
+NOTA: os relatórios da aplicação foram implementados utilizando o antigo IReport 5.6.0 (descontinuado). O IReport 5.6.0 só funcionava com a versão de java JRE 7, para implementação de relatórios.
+Para a execução dos relatórios da aplicação, é garantido o seu funcionam na última versão de java disponível.
