@@ -23,7 +23,7 @@ public class Dao {
 	//private static final String DRIVER_CLASS_MYSQL = "com.mysql.jdbc.Driver";
 	
 	// Para MySql 8.0
-	private static final String URL_MYSQL          = "jdbc:mysql://localhost:3306/clinica_medica?verifyServerCertificate=false&useSSL=true&serverTimezone=UTC";
+	private static final String URL_MYSQL          = "jdbc:mysql://localhost:3306/CLINICA_MEDICA?verifyServerCertificate=false&useSSL=true&serverTimezone=UTC";
 	private static final String DRIVER_CLASS_MYSQL = "com.mysql.cj.jdbc.Driver";
 	private static final String USER               = "root";
 	private static final String PASS               = "root";

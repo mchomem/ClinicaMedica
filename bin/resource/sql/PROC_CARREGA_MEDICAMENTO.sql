@@ -1,0 +1,71 @@
+USE CLINICA_MEDICA;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS PROC_CARREGA_MEDICAMENTO;$$
+CREATE PROCEDURE PROC_CARREGA_MEDICAMENTO()
+BEGIN
+	
+    DECLARE N1    INT;
+    DECLARE N2    INT;
+    DECLARE I     INT DEFAULT 0;
+    DECLARE _NOME VARCHAR(200);
+    
+    DELETE FROM MEDICAMENTO WHERE ID_MEDICAMENTO > 0;
+    ALTER TABLE MEDICAMENTO AUTO_INCREMENT = 1;
+    
+    WHILE I < 100 DO
+    BEGIN
+		
+        SET I  = I + 1;
+		SET N1 = ROUND(RAND() * 10);
+        SET N2 = ROUND(RAND() * 10);
+        
+        IF N1 = 0 THEN
+			SET N1 = 1;
+        END IF;
+        
+        #TIPOS DE MEDICAMENTOS
+        CASE N1
+			WHEN 1 THEN SET _NOME = 'ASPIRINA';
+            WHEN 2 THEN SET _NOME = 'ANALGESICO';
+            WHEN 3 THEN SET _NOME = 'VITAMINA C';
+            WHEN 4 THEN SET _NOME = 'ANESTÉSICO';
+            WHEN 5 THEN SET _NOME = 'PARACETAMOL';
+            WHEN 6 THEN SET _NOME = 'MORFINA';
+            WHEN 7 THEN SET _NOME = 'POLARAMINE';
+            WHEN 8 THEN SET _NOME = 'DIPIRONA';
+            WHEN 9 THEN SET _NOME = 'DIAPEZAN';
+            ELSE        SET _NOME = 'INSULINA NPH';
+        END CASE;
+        
+        #LABORATÓRIOS
+        CASE N2
+            WHEN 1 THEN SET _NOME = CONCAT(_NOME, ' ', 'ABBOTT');
+            WHEN 2 THEN SET _NOME = CONCAT(_NOME, ' ', 'ALTHAIA');
+            WHEN 3 THEN SET _NOME = CONCAT(_NOME, ' ', 'BUNKER');
+            WHEN 4 THEN SET _NOME = CONCAT(_NOME, ' ', 'CIFARMA');
+            WHEN 5 THEN SET _NOME = CONCAT(_NOME, ' ', 'COSMED');
+            WHEN 6 THEN SET _NOME = CONCAT(_NOME, ' ', 'DROXTER');
+            WHEN 7 THEN SET _NOME = CONCAT(_NOME, ' ', 'EMS');
+            WHEN 8 THEN SET _NOME = CONCAT(_NOME, ' ', 'EUROFARMA');
+            WHEN 9 THEN SET _NOME = CONCAT(_NOME, ' ', 'GEYER');
+            ELSE        SET _NOME = CONCAT(_NOME, ' ', 'HERTZ');
+        END CASE;
+        
+        INSERT INTO MEDICAMENTO
+        (
+			NOME
+		)
+        VALUES
+        (
+			_NOME
+		);
+        
+	END;
+	END WHILE;
+    
+END $$
+DELIMITER ;
+
+CALL PROC_CARREGA_MEDICAMENTO();
+SELECT * FROM MEDICAMENTO;
