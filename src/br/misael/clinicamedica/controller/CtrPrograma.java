@@ -4,9 +4,7 @@ public class CtrPrograma {
 
 	public CtrPrograma() {}
 	
-	public void iniciar() {
-		
-		new CtrMenu();
-		
+	public void iniciar() {		
+		new CtrMenu();		
 	}
 }

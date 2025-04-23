@@ -1,13 +1,19 @@
 package br.misael.clinicamedica;
 
-import br.misael.clinicamedica.controller.CtrPrograma;
+import java.awt.EventQueue;
+
+import br.misael.clinicamedica.controller.CtrLogin;
 
 public class Programa {
-	
-    public static void main(String []args) {
-    	
-		new CtrPrograma().iniciar();
-         
-    }
-    
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(() -> {
+			try {
+				new CtrLogin();
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
+	}
 }
