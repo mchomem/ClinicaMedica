@@ -60,7 +60,7 @@ public class FrmLogin extends JFrame {
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(223, 210, 111, 23);
 		contentPane.add(btnCancelar);
-		
+
 		labelImage = new JLabel("");
 		labelImage.setIcon(new ImageIcon(FrmLogin.class.getResource("/resource/img/login.png")));
 		labelImage.setBounds(10, 11, 414, 120);
@@ -74,11 +74,11 @@ public class FrmLogin extends JFrame {
 	public void setContentPane(JPanel contentPane) {
 		this.contentPane = contentPane;
 	}
-	
-	public  JLabel getLabelImage() {
+
+	public JLabel getLabelImage() {
 		return this.labelImage;
 	}
-	
+
 	public void setLabelImage(JLabel labelImage) {
 		this.labelImage = labelImage;
 	}

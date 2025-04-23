@@ -26,7 +26,7 @@ import br.misael.clinicamedica.model.FormUtils;
 import br.misael.clinicamedica.model.MascaraCampo;
 
 public class FrmPaciente extends JInternalFrame {
-	
+
 	private static final long serialVersionUID = -6805869000433143815L;
 	private JToolBar toolBar;
 	private JLabel lblNome;
@@ -62,82 +62,83 @@ public class FrmPaciente extends JInternalFrame {
 	private JPanel pnlRegistros;
 	private JPanel pnlFoto;
 	private Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-	
+
 	/**
 	 * Create the frame.
 	 */
 	public FrmPaciente() {
-		
+
 		setClosable(true);
 		setTitle("Paciente");
 		setBounds(0, 0, 865, 649);
-		//setLocation((dimension.width - this.getWidth()) / 2, (dimension.height - this.getHeight()) / 2);
+		// setLocation((dimension.width - this.getWidth()) / 2, (dimension.height -
+		// this.getHeight()) / 2);
 		setLocation((dimension.width - this.getWidth()) / 2, 50);
-		
+
 		getContentPane().setLayout(null);
-		
+
 		toolBar = new JToolBar();
 		toolBar.setFloatable(false);
 		toolBar.setBounds(0, 0, 849, 30);
 		getContentPane().add(toolBar);
-		
+
 		btnInicializar = new JButton("");
 		btnInicializar.setBorderPainted(false);
 		btnInicializar.setIcon(new ImageIcon(FrmPaciente.class.getResource("/resource/img/page_white.png")));
 		toolBar.add(btnInicializar);
-		
+
 		btnGravar = new JButton("");
 		btnGravar.setBorderPainted(false);
 		btnGravar.setIcon(new ImageIcon(FrmPaciente.class.getResource("/resource/img/disk.png")));
 		toolBar.add(btnGravar);
-		
+
 		btnExcluir = new JButton("");
 		btnExcluir.setBorderPainted(false);
 		btnExcluir.setIcon(new ImageIcon(FrmPaciente.class.getResource("/resource/img/cross.png")));
 		toolBar.add(btnExcluir);
-		
+
 		btnRelatorio = new JButton("");
 		btnRelatorio.setBorderPainted(false);
 		toolBar.add(btnRelatorio);
 		btnRelatorio.setIcon(new ImageIcon(FrmPaciente.class.getResource("/resource/img/page.png")));
-		
+
 		pnlDados = new JPanel();
 		pnlDados.setBorder(new TitledBorder(null, "Dados", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLUE));
 		pnlDados.setBounds(10, 41, 829, 242);
 		getContentPane().add(pnlDados);
 		pnlDados.setLayout(null);
-		
+
 		lblNome = new JLabel("Nome:");
 		lblNome.setBounds(20, 30, 60, 25);
 		pnlDados.add(lblNome);
-		
+
 		txtNome = new JTextField();
 		txtNome.setBounds(20, 60, 351, 25);
 		txtNome.setColumns(10);
 		pnlDados.add(txtNome);
-		
+
 		chckbxAtivo = new JCheckBox("");
 		chckbxAtivo.setHorizontalAlignment(SwingConstants.LEFT);
 		chckbxAtivo.setBounds(490, 150, 26, 25);
 		pnlDados.add(chckbxAtivo);
-		
+
 		lblAtivo = new JLabel("Ativo?");
 		lblAtivo.setBounds(450, 150, 46, 25);
 		pnlDados.add(lblAtivo);
-		
+
 		lblSexo = new JLabel("Sexo:");
 		lblSexo.setBounds(20, 90, 60, 25);
 		pnlDados.add(lblSexo);
-		
+
 		rdbtnMasculino = new JRadioButton("Masculino");
 		rdbtnMasculino.setSelected(true);
 		rdbtnMasculino.setBounds(20, 120, 109, 25);
 		pnlDados.add(rdbtnMasculino);
-		
+
 		rdbtnFeminino = new JRadioButton("Feminino");
 		rdbtnFeminino.setBounds(130, 120, 109, 25);
 		pnlDados.add(rdbtnFeminino);
-		
+
 		buttonGroupSexo = new ButtonGroup();
 		buttonGroupSexo.add(rdbtnMasculino);
 		buttonGroupSexo.add(rdbtnFeminino);
@@ -145,76 +146,78 @@ public class FrmPaciente extends JInternalFrame {
 		lblEndereco = new JLabel("Endere\u00E7o:");
 		lblEndereco.setBounds(20, 150, 60, 25);
 		pnlDados.add(lblEndereco);
-		
+
 		txtEndereco = new JTextField();
 		txtEndereco.setBounds(20, 180, 351, 25);
 		pnlDados.add(txtEndereco);
 		txtEndereco.setColumns(10);
-		
+
 		lblTelefone = new JLabel("Telefone:");
 		lblTelefone.setBounds(450, 90, 60, 25);
 		pnlDados.add(lblTelefone);
-		
+
 		ftxtTelefone = new JFormattedTextField(FormUtils.formatarMascaraCampos(ftxtTelefone, MascaraCampo.TELEFONE));
 		ftxtTelefone.setBounds(450, 120, 100, 25);
 		pnlDados.add(ftxtTelefone);
-		
+
 		lblDataNascimento = new JLabel("Data Nascimento:");
 		lblDataNascimento.setBounds(450, 30, 118, 25);
 		pnlDados.add(lblDataNascimento);
-		
-		ftxtDataNascimento = new JFormattedTextField(FormUtils.formatarMascaraCampos(ftxtDataNascimento, MascaraCampo.DATAHORA));
+
+		ftxtDataNascimento = new JFormattedTextField(
+				FormUtils.formatarMascaraCampos(ftxtDataNascimento, MascaraCampo.DATAHORA));
 		ftxtDataNascimento.setBounds(450, 60, 130, 25);
 		pnlDados.add(ftxtDataNascimento);
-		
+
 		lblFoto = new JLabel("Foto:");
 		lblFoto.setBounds(638, 30, 46, 25);
 		pnlDados.add(lblFoto);
-		
+
 		pnlFoto = new JPanel();
 		pnlFoto.setToolTipText("");
 		pnlFoto.setBackground(Color.GRAY);
 		pnlFoto.setBounds(638, 60, 160, 160);
 		pnlDados.add(pnlFoto);
 		pnlFoto.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-		
+
 		btnCarregar = new JButton("Carregar");
 		btnCarregar.setBounds(706, 31, 89, 23);
 		pnlDados.add(btnCarregar);
-		
+
 		pnlRegistros = new JPanel();
 		pnlRegistros.setForeground(Color.BLACK);
-		pnlRegistros.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Registros", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLUE));
+		pnlRegistros.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Registros",
+				TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLUE));
 		pnlRegistros.setBounds(10, 294, 829, 314);
 		getContentPane().add(pnlRegistros);
 		pnlRegistros.setLayout(null);
-		
+
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(20, 100, 786, 203);
 		pnlRegistros.add(scrollPane);
-		
+
 		table = new JTable();
 		scrollPane.setViewportView(table);
-		
+
 		btnFiltrar = new JButton("");
 		btnFiltrar.setIcon(new ImageIcon(FrmPaciente.class.getResource("/resource/img/find.png")));
 		btnFiltrar.setBounds(615, 30, 23, 25);
 		pnlRegistros.add(btnFiltrar);
-		
+
 		txtFiltro = new JTextField();
 		txtFiltro.setBounds(20, 30, 220, 25);
 		pnlRegistros.add(txtFiltro);
 		txtFiltro.setColumns(10);
-		
+
 		rdbtnTodos = new JRadioButton("Todos");
 		rdbtnTodos.setBounds(505, 30, 100, 23);
 		pnlRegistros.add(rdbtnTodos);
-		
+
 		rdbtnAtivo = new JRadioButton("Ativo");
 		rdbtnAtivo.setSelected(true);
 		rdbtnAtivo.setBounds(268, 30, 100, 23);
 		pnlRegistros.add(rdbtnAtivo);
-		
+
 		rdbtnInativo = new JRadioButton("Inativo");
 		rdbtnInativo.setBounds(387, 30, 100, 23);
 		pnlRegistros.add(rdbtnInativo);
@@ -223,13 +226,13 @@ public class FrmPaciente extends JInternalFrame {
 		buttonGroupAtivo.add(rdbtnAtivo);
 		buttonGroupAtivo.add(rdbtnInativo);
 		buttonGroupAtivo.add(rdbtnTodos);
-		
+
 		lblContadorRegistros = new JLabel("0 registro(s)");
 		lblContadorRegistros.setBounds(20, 75, 220, 14);
 		pnlRegistros.add(lblContadorRegistros);
-		
+
 		setVisible(true);
-		
+
 	}
 
 	public JToolBar getToolBar() {
@@ -295,11 +298,11 @@ public class FrmPaciente extends JInternalFrame {
 	public void setLblFoto(JLabel lblFoto) {
 		this.lblFoto = lblFoto;
 	}
-	
+
 	public JLabel getLblContadorRegistros() {
 		return lblContadorRegistros;
 	}
-	
+
 	public void setLblContadorRegistros(JLabel lblContadorRegistros) {
 		this.lblContadorRegistros = lblContadorRegistros;
 	}
@@ -359,11 +362,11 @@ public class FrmPaciente extends JInternalFrame {
 	public void setButtonGroupSexo(ButtonGroup buttonGroupSexo) {
 		this.buttonGroupSexo = buttonGroupSexo;
 	}
-	
+
 	public ButtonGroup getButtonGroupAtivo() {
 		return buttonGroupAtivo;
 	}
-	
+
 	public void setButtonGroupAtivo(ButtonGroup buttonGroupAtivo) {
 		this.buttonGroupAtivo = buttonGroupAtivo;
 	}
@@ -423,11 +426,11 @@ public class FrmPaciente extends JInternalFrame {
 	public void setBtnRelatorio(JButton btnRelatorio) {
 		this.btnRelatorio = btnRelatorio;
 	}
-	
+
 	public JButton getBtnCarregar() {
 		return btnCarregar;
 	}
-	
+
 	public void setBtnCarregar(JButton btnCarregar) {
 		this.btnCarregar = btnCarregar;
 	}

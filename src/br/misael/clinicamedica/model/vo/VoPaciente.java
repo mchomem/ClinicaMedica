@@ -10,31 +10,33 @@ import java.sql.Timestamp;
  */
 public class VoPaciente {
 
-    private long idPaciente;
-    private String nome;
-    private Timestamp dataNascimento;
-    private String sexo;
-    private String endereco;
-    private String telefone;
-    private boolean ativo;
-    private byte[] foto;
+	private long idPaciente;
+	private String nome;
+	private Timestamp dataNascimento;
+	private String sexo;
+	private String endereco;
+	private String telefone;
+	private boolean ativo;
+	private byte[] foto;
 
-    public VoPaciente() {}
+	public VoPaciente() {
+	}
 
-    public VoPaciente(long idPaciente, String nome, Timestamp dataNascimento, String sexo, String endereco, String telefone, boolean ativo, byte[] foto) {
+	public VoPaciente(long idPaciente, String nome, Timestamp dataNascimento, String sexo, String endereco,
+			String telefone, boolean ativo, byte[] foto) {
 
-        this.idPaciente     = idPaciente;
-        this.nome           = nome;
-        this.dataNascimento = dataNascimento;
-        this.sexo           = sexo;
-        this.endereco       = endereco;
-        this.telefone       = telefone;
-        this.ativo          = ativo;
-        this.foto           = foto;
+		this.idPaciente = idPaciente;
+		this.nome = nome;
+		this.dataNascimento = dataNascimento;
+		this.sexo = sexo;
+		this.endereco = endereco;
+		this.telefone = telefone;
+		this.ativo = ativo;
+		this.foto = foto;
 
-    }
+	}
 
-    public long getIdPaciente() {
+	public long getIdPaciente() {
 		return idPaciente;
 	}
 
@@ -53,7 +55,7 @@ public class VoPaciente {
 	public Timestamp getDataNascimento() {
 		return dataNascimento;
 	}
-	
+
 	public void setDataNascimento(Timestamp dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
@@ -89,18 +91,18 @@ public class VoPaciente {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-	
+
 	public byte[] getFoto() {
 		return foto;
 	}
-	
+
 	public void setFoto(byte[] foto) {
 		this.foto = foto;
 	}
 
 	@Override
-    public String toString() {
-    	return nome;
-    }
+	public String toString() {
+		return nome;
+	}
 
 }

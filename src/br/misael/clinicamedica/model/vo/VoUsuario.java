@@ -6,8 +6,9 @@ public class VoUsuario {
 	private String login;
 	private String password;
 	private Boolean ativo;
-	
-	public VoUsuario() {}
+
+	public VoUsuario() {
+	}
 
 	public void setIdUsuario(long idUsuario, String login, String password, Boolean ativo) {
 		this.idUsuario = idUsuario;
@@ -15,7 +16,7 @@ public class VoUsuario {
 		this.password = password;
 		this.ativo = ativo;
 	}
-	
+
 	public long getIdUsuario() {
 		return idUsuario;
 	}
@@ -23,7 +24,7 @@ public class VoUsuario {
 	public void setIdUsuario(long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
-	
+
 	public String getLogin() {
 		return this.login;
 	}

@@ -7,23 +7,23 @@ import javax.swing.table.AbstractTableModel;
 
 import br.misael.clinicamedica.model.vo.VoRegistroConsulta;
 
-public class TblRegistroConsulta extends AbstractTableModel  {
+public class TblRegistroConsulta extends AbstractTableModel {
 
-	private static final long serialVersionUID       = 6640276797009832316L;
-	private static final int COL_ID_CONSULTA         = 0;
-	private static final int COL_CONSULTA            = 1;
-	private static final int COL_PRONTUARIO          = 2;
+	private static final long serialVersionUID = 6640276797009832316L;
+	private static final int COL_ID_CONSULTA = 0;
+	private static final int COL_CONSULTA = 1;
+	private static final int COL_PRONTUARIO = 2;
 	private static final int COL_CONSULTA_FINALIZADA = 3;
-	private static final int COL_DATA_FIM_CONSULTA   = 4;
-	
+	private static final int COL_DATA_FIM_CONSULTA = 4;
+
 	private List<VoRegistroConsulta> registros;
-	
+
 	public TblRegistroConsulta(List<VoRegistroConsulta> registros) {
-		
+
 		this.registros = registros;
 
 	}
-	
+
 	@Override
 	public int getColumnCount() {
 
@@ -38,118 +38,118 @@ public class TblRegistroConsulta extends AbstractTableModel  {
 
 	@Override
 	public Object getValueAt(int indiceLinha, int indiceColuna) {
-		
+
 		VoRegistroConsulta voRegistroConsulta = registros.get(indiceLinha);
-		
-		if(indiceColuna == COL_ID_CONSULTA) {
-			
+
+		if (indiceColuna == COL_ID_CONSULTA) {
+
 			return voRegistroConsulta.getVoAgendamento().getIdConsulta();
-			
-		} else if(indiceColuna == COL_CONSULTA) {
-			
+
+		} else if (indiceColuna == COL_CONSULTA) {
+
 			return voRegistroConsulta.getVoAgendamento();
-			
-		} else if(indiceColuna == COL_PRONTUARIO) {
-			
+
+		} else if (indiceColuna == COL_PRONTUARIO) {
+
 			return voRegistroConsulta.getProntuario();
-			
-		} else if(indiceColuna == COL_CONSULTA_FINALIZADA) {
-			
+
+		} else if (indiceColuna == COL_CONSULTA_FINALIZADA) {
+
 			return (voRegistroConsulta.isConsultaFinalizada() ? "Sim" : "Não");
-			
-		} else if(indiceColuna == COL_DATA_FIM_CONSULTA) {
-			
+
+		} else if (indiceColuna == COL_DATA_FIM_CONSULTA) {
+
 			String dataHora;
-			
-			if(voRegistroConsulta.getDataFimConsulta() == null) {
+
+			if (voRegistroConsulta.getDataFimConsulta() == null) {
 				dataHora = "00/00/0000 00:00:00";
 			} else {
 				dataHora = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(voRegistroConsulta.getDataFimConsulta());
 			}
-			
+
 			return dataHora;
-			
+
 		}
-		
+
 		return null;
-		
+
 	}
-	
+
 	@Override
 	public String getColumnName(int column) {
-		
+
 		String coluna = "";
-		
+
 		switch (column) {
-		
+
 		case COL_ID_CONSULTA:
-			
+
 			coluna = "Código";
 			break;
-		
+
 		case COL_CONSULTA:
-			
+
 			coluna = "Agendamento";
 			break;
-			
+
 		case COL_PRONTUARIO:
-			
+
 			coluna = "Prontuário";
 			break;
-			
+
 		case COL_CONSULTA_FINALIZADA:
-			
+
 			coluna = "Consulta Finalizada?";
 			break;
-			
+
 		case COL_DATA_FIM_CONSULTA:
-			
+
 			coluna = "Data Fim Consulta";
 			break;
 
 		default:
-			
+
 			throw new IllegalArgumentException("Coluna inválida");
-			
+
 		}
-		
+
 		return coluna;
-		
+
 	}
-	
+
 	@Override
 	public Class<?> getColumnClass(int columnIndex) {
 
-		if(columnIndex == COL_ID_CONSULTA) {
-			
+		if (columnIndex == COL_ID_CONSULTA) {
+
 			return Long.class;
-			
-		} else if(columnIndex == COL_CONSULTA) {
-			
+
+		} else if (columnIndex == COL_CONSULTA) {
+
 			return String.class;
-			
-		} else if(columnIndex == COL_PRONTUARIO) {
-			
+
+		} else if (columnIndex == COL_PRONTUARIO) {
+
 			return String.class;
-			
-		} else if(columnIndex == COL_CONSULTA_FINALIZADA) {
-			
+
+		} else if (columnIndex == COL_CONSULTA_FINALIZADA) {
+
 			return String.class;
-			
-		} else if(columnIndex == COL_DATA_FIM_CONSULTA) {
-			
+
+		} else if (columnIndex == COL_DATA_FIM_CONSULTA) {
+
 			return String.class;
-			
+
 		}
-		
+
 		return null;
-		
+
 	}
-	
+
 	public VoRegistroConsulta get(int linha) {
-		
+
 		return this.registros.get(linha);
-		
+
 	}
 
 }

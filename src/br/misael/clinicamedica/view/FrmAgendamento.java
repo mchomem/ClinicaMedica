@@ -47,77 +47,79 @@ public class FrmAgendamento extends JInternalFrame {
 		setClosable(true);
 		setTitle("Agendamento");
 		setBounds(0, 0, 500, 500);
-		// setLocation((dimension.width - this.getWidth()) / 2, (dimension.height - this.getHeight()) / 2 );
+		// setLocation((dimension.width - this.getWidth()) / 2, (dimension.height -
+		// this.getHeight()) / 2 );
 		setLocation((dimension.width - this.getWidth()) / 2, 50);
 		getContentPane().setLayout(null);
-		
+
 		toolBar = new JToolBar();
 		toolBar.setBounds(0, 0, 484, 30);
 		toolBar.setFloatable(false);
 		getContentPane().add(toolBar);
-		
+
 		btnInicializar = new JButton("");
 		btnInicializar.setBorderPainted(false);
 		btnInicializar.setIcon(new ImageIcon(FrmAgendamento.class.getResource("/resource/img/page_white.png")));
 		toolBar.add(btnInicializar);
-		
+
 		btnGravar = new JButton("");
 		btnGravar.setBorderPainted(false);
 		btnGravar.setIcon(new ImageIcon(FrmAgendamento.class.getResource("/resource/img/disk.png")));
 		toolBar.add(btnGravar);
-		
+
 		btnExcluir = new JButton("");
 		btnExcluir.setBorderPainted(false);
 		btnExcluir.setIcon(new ImageIcon(FrmAgendamento.class.getResource("/resource/img/cross.png")));
 		toolBar.add(btnExcluir);
-		
+
 		btnRelatorio = new JButton("");
 		btnRelatorio.setBorderPainted(false);
 		btnRelatorio.setIcon(new ImageIcon(FrmAgendamento.class.getResource("/resource/img/page.png")));
 		toolBar.add(btnRelatorio);
-		
+
 		pnlDados = new JPanel();
 		pnlDados.setBounds(10, 40, 460, 160);
 		pnlDados.setBorder(new TitledBorder(null, "Dados", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLUE));
 		getContentPane().add(pnlDados);
 		pnlDados.setLayout(null);
-		
+
 		lblPaciente = new JLabel("Paciente:");
 		lblPaciente.setBounds(20, 30, 130, 25);
 		pnlDados.add(lblPaciente);
-		
+
 		cbPaciente = new JComboBox<Object>();
 		cbPaciente.setEditable(true);
 		cbPaciente.setBounds(20, 60, 346, 25);
 		pnlDados.add(cbPaciente);
-		
+
 		lblData = new JLabel("Data do Agendamento:");
 		lblData.setBounds(20, 90, 130, 25);
 		pnlDados.add(lblData);
-		
+
 		ftxtData = new JFormattedTextField(FormUtils.formatarMascaraCampos(ftxtData, MascaraCampo.DATAHORA));
 		ftxtData.setBounds(20, 120, 130, 25);
 		pnlDados.add(ftxtData);
 		ftxtData.setColumns(10);
-		
+
 		pnlRegistros = new JPanel();
-		pnlRegistros.setBorder(new TitledBorder(null, "Registros", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLUE));
+		pnlRegistros.setBorder(
+				new TitledBorder(null, "Registros", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLUE));
 		pnlRegistros.setBounds(10, 210, 460, 240);
 		getContentPane().add(pnlRegistros);
 		pnlRegistros.setLayout(null);
-		
+
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(20, 63, 420, 160);
 		pnlRegistros.add(scrollPane);
-		
+
 		table = new JTable();
 		scrollPane.setViewportView(table);
-		
+
 		txtFiltro = new JTextField();
 		txtFiltro.setBounds(20, 30, 220, 25);
 		pnlRegistros.add(txtFiltro);
 		txtFiltro.setColumns(10);
-		
+
 		btnFiltrar = new JButton("");
 		btnFiltrar.setIcon(new ImageIcon(FrmAgendamento.class.getResource("/resource/img/find.png")));
 		btnFiltrar.setBounds(245, 29, 23, 25);
@@ -244,7 +246,5 @@ public class FrmAgendamento extends JInternalFrame {
 	public void setBtnFiltrar(JButton btnFiltrar) {
 		this.btnFiltrar = btnFiltrar;
 	}
-	
-	
 
 }

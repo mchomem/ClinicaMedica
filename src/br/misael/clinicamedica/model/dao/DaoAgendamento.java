@@ -11,81 +11,81 @@ import br.misael.clinicamedica.model.vo.VoAgendamento;
 import br.misael.clinicamedica.model.vo.VoPaciente;
 
 public class DaoAgendamento {
-	
+
 	private Dao dao;
-	
+
 	public DaoAgendamento() {
 		dao = new Dao();
 	}
-	
-	public void inserir(VoAgendamento voAgendamento)  throws ClassNotFoundException, SQLException {
-		
-		Connection conn        = dao.conectar();
+
+	public void inserir(VoAgendamento voAgendamento) throws ClassNotFoundException, SQLException {
+
+		Connection conn = dao.conectar();
 		PreparedStatement pstm = null;
-		StringBuilder sql      = new StringBuilder();
-		
+		StringBuilder sql = new StringBuilder();
+
 		sql.append("INSERT INTO AGENDAMENTO");
 		sql.append("(ID_PACIENTE, DATA_CONSULTA)");
 		sql.append(" VALUES(?, ?)");
-		
+
 		pstm = conn.prepareStatement(sql.toString());
 		pstm.setLong(1, voAgendamento.getPaciente().getIdPaciente());
 		pstm.setTimestamp(2, voAgendamento.getDataConsulta());
-		
+
 		pstm.executeUpdate();
-		
+
 		dao.desconectar(conn, pstm, null);
-		
+
 	}
-	
+
 	public void alterar(VoAgendamento voAgendamento) throws ClassNotFoundException, SQLException {
-		
-		Connection conn        = dao.conectar();
+
+		Connection conn = dao.conectar();
 		PreparedStatement pstm = null;
-		StringBuilder sql      = new StringBuilder();
-		
+		StringBuilder sql = new StringBuilder();
+
 		sql.append("UPDATE AGENDAMENTO");
 		sql.append(" SET ID_PACIENTE = ?, DATA_CONSULTA = ?");
 		sql.append(" WHERE ID_CONSULTA = ?");
-		
+
 		pstm = conn.prepareStatement(sql.toString());
 		pstm.setLong(1, voAgendamento.getPaciente().getIdPaciente());
 		pstm.setTimestamp(2, voAgendamento.getDataConsulta());
 		pstm.setLong(3, voAgendamento.getIdConsulta());
-		
+
 		pstm.executeUpdate();
-		
+
 		dao.desconectar(conn, pstm, null);
-		
+
 	}
-	
+
 	public void excluir(VoAgendamento voAgendamento) throws ClassNotFoundException, SQLException {
-		
-		Connection conn        = dao.conectar();
+
+		Connection conn = dao.conectar();
 		PreparedStatement pstm = null;
-		StringBuilder sql      = new StringBuilder();
-		
+		StringBuilder sql = new StringBuilder();
+
 		sql.append("DELETE FROM AGENDAMENTO");
 		sql.append(" WHERE");
 		sql.append(" ID_CONSULTA = ?");
-		
+
 		pstm = conn.prepareStatement(sql.toString());
 		pstm.setLong(1, voAgendamento.getIdConsulta());
-		
+
 		pstm.executeUpdate();
-		
+
 		dao.desconectar(conn, pstm, null);
-		
+
 	}
-	
+
 	public List<VoAgendamento> consultar() throws ClassNotFoundException, SQLException {
-		
-		Connection conn                  = dao.conectar();
-		PreparedStatement pstm           = null;
+
+		Connection conn = dao.conectar();
+		PreparedStatement pstm = null;
 		List<VoAgendamento> agendamentos = new ArrayList<VoAgendamento>();
-		ResultSet rs                     = null;
-		StringBuilder sql                = new StringBuilder();
-		
+		ResultSet rs = null;
+		StringBuilder sql = new StringBuilder();
+
 		sql.append("SELECT");
 		sql.append(" A.ID_CONSULTA");
 		sql.append(", P.ID_PACIENTE");
@@ -99,43 +99,43 @@ public class DaoAgendamento {
 		sql.append(" ON(A.ID_PACIENTE = P.ID_PACIENTE)");
 		sql.append(" ORDER BY");
 		sql.append(" A.ID_CONSULTA");
-		
+
 		pstm = conn.prepareStatement(sql.toString());
-		rs   = pstm.executeQuery();
-		
-		while(rs.next()) {
-			
+		rs = pstm.executeQuery();
+
+		while (rs.next()) {
+
 			VoAgendamento voAgendamento = new VoAgendamento();
-			VoPaciente voPaciente       = new VoPaciente();
+			VoPaciente voPaciente = new VoPaciente();
 			voAgendamento.setPaciente(voPaciente);
-			
+
 			voAgendamento.setIdConsulta(rs.getLong("ID_CONSULTA"));
-			
+
 			voAgendamento.getPaciente().setIdPaciente(rs.getLong("ID_PACIENTE"));
 			voAgendamento.getPaciente().setNome(rs.getString("NOME"));
 			voAgendamento.getPaciente().setDataNascimento(rs.getTimestamp("DATA_NASCIMENTO"));
 			voAgendamento.getPaciente().setAtivo(rs.getBoolean("ATIVO"));
-			
+
 			voAgendamento.setDataConsulta(rs.getTimestamp("DATA_CONSULTA"));
-			
+
 			agendamentos.add(voAgendamento);
-			
+
 		}
-		
+
 		dao.desconectar(conn, pstm, rs);
-		
+
 		return agendamentos;
-		
+
 	}
-	
+
 	public List<VoAgendamento> consultar(String nomePaciente) throws ClassNotFoundException, SQLException {
-		
-		Connection conn                  = dao.conectar();
-		PreparedStatement pstm           = null;
+
+		Connection conn = dao.conectar();
+		PreparedStatement pstm = null;
 		List<VoAgendamento> agendamentos = new ArrayList<VoAgendamento>();
-		ResultSet rs                     = null;
-		StringBuilder sql                = new StringBuilder();
-		
+		ResultSet rs = null;
+		StringBuilder sql = new StringBuilder();
+
 		sql.append("SELECT");
 		sql.append(" A.ID_CONSULTA");
 		sql.append(", P.ID_PACIENTE");
@@ -151,15 +151,15 @@ public class DaoAgendamento {
 		sql.append(" P.NOME LIKE ?");
 		sql.append(" ORDER BY");
 		sql.append(" A.ID_CONSULTA");
-		
+
 		pstm = conn.prepareStatement(sql.toString());
 		pstm.setString(1, "%" + nomePaciente + "%");
-		rs   = pstm.executeQuery();
-		
-		while(rs.next()) {
-			
+		rs = pstm.executeQuery();
+
+		while (rs.next()) {
+
 			VoAgendamento voAgendamento = new VoAgendamento();
-			VoPaciente voPaciente       = new VoPaciente();
+			VoPaciente voPaciente = new VoPaciente();
 			voAgendamento.setPaciente(voPaciente);
 
 			voAgendamento.setIdConsulta(rs.getLong("ID_CONSULTA"));
@@ -168,27 +168,27 @@ public class DaoAgendamento {
 			voAgendamento.getPaciente().setNome(rs.getString("NOME"));
 			voAgendamento.getPaciente().setDataNascimento(rs.getTimestamp("DATA_NASCIMENTO"));
 			voAgendamento.getPaciente().setAtivo(rs.getBoolean("ATIVO"));
-			
+
 			voAgendamento.setDataConsulta(rs.getTimestamp("DATA_CONSULTA"));
-			
+
 			agendamentos.add(voAgendamento);
-			
+
 		}
-		
+
 		dao.desconectar(conn, pstm, rs);
-		
+
 		return agendamentos;
-		
+
 	}
-	
+
 	public List<VoAgendamento> consultar(VoPaciente paciente) throws ClassNotFoundException, SQLException {
-		
-		Connection conn                  = dao.conectar();
-		PreparedStatement pstm           = null;
+
+		Connection conn = dao.conectar();
+		PreparedStatement pstm = null;
 		List<VoAgendamento> agendamentos = new ArrayList<VoAgendamento>();
-		ResultSet rs                     = null;
-		StringBuilder sql                = new StringBuilder();
-		
+		ResultSet rs = null;
+		StringBuilder sql = new StringBuilder();
+
 		sql.append("SELECT");
 		sql.append(" A.ID_CONSULTA");
 		sql.append(", P.ID_PACIENTE");
@@ -204,15 +204,15 @@ public class DaoAgendamento {
 		sql.append(" P.ID_PACIENTE = ?");
 		sql.append(" ORDER BY");
 		sql.append(" A.ID_CONSULTA");
-		
+
 		pstm = conn.prepareStatement(sql.toString());
 		pstm.setLong(1, paciente.getIdPaciente());
-		rs   = pstm.executeQuery();
-		
-		while(rs.next()) {
-			
+		rs = pstm.executeQuery();
+
+		while (rs.next()) {
+
 			VoAgendamento voAgendamento = new VoAgendamento();
-			VoPaciente voPaciente       = new VoPaciente();
+			VoPaciente voPaciente = new VoPaciente();
 			voAgendamento.setPaciente(voPaciente);
 
 			voAgendamento.setIdConsulta(rs.getLong("ID_CONSULTA"));
@@ -221,17 +221,17 @@ public class DaoAgendamento {
 			voAgendamento.getPaciente().setNome(rs.getString("NOME"));
 			voAgendamento.getPaciente().setDataNascimento(rs.getTimestamp("DATA_NASCIMENTO"));
 			voAgendamento.getPaciente().setAtivo(rs.getBoolean("ATIVO"));
-			
+
 			voAgendamento.setDataConsulta(rs.getTimestamp("DATA_CONSULTA"));
-			
+
 			agendamentos.add(voAgendamento);
-			
+
 		}
-		
+
 		dao.desconectar(conn, pstm, rs);
-		
+
 		return agendamentos;
-		
+
 	}
-	
+
 }

@@ -1,26 +1,27 @@
 package br.misael.clinicamedica.model.vo;
 
 /**
- * Classe que contém a definição de dados para Histórico de Pacientes
- * que efetuaram um agendamento finalizando a consulta.
+ * Classe que contém a definição de dados para Histórico de Pacientes que
+ * efetuaram um agendamento finalizando a consulta.
  * 
  * @author Misael C. Homem
  *
  */
 public class VoHistorico {
-    
+
 	private VoPaciente voPaciente;
 	private VoAgendamento voAgendamento;
 	private VoRegistroConsulta voRegistroConsulta;
-	
-	public VoHistorico() {}
-	
+
+	public VoHistorico() {
+	}
+
 	public VoHistorico(VoPaciente voPaciente, VoAgendamento voAgendamento, VoRegistroConsulta voRegistroConsulta) {
-		
+
 		this.voPaciente = voPaciente;
 		this.voAgendamento = voAgendamento;
 		this.voRegistroConsulta = voRegistroConsulta;
-		
+
 	}
 
 	public VoPaciente getVoPaciente() {
@@ -46,5 +47,5 @@ public class VoHistorico {
 	public void setVoRegistroConsulta(VoRegistroConsulta voRegistroConsulta) {
 		this.voRegistroConsulta = voRegistroConsulta;
 	}
-	
+
 }

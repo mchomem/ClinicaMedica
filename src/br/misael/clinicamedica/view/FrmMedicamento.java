@@ -41,68 +41,70 @@ public class FrmMedicamento extends JInternalFrame {
 		setClosable(true);
 		setTitle("Medicamento");
 		setBounds(0, 0, 466, 422);
-		// setLocation((dimension.width - this.getWidth()) / 2, (dimension.height - this.getHeight()) / 2 );
+		// setLocation((dimension.width - this.getWidth()) / 2, (dimension.height -
+		// this.getHeight()) / 2 );
 		setLocation((dimension.width - this.getWidth()) / 2, 50);
 		getContentPane().setLayout(null);
-		
+
 		toolBar = new JToolBar();
 		toolBar.setFloatable(false);
 		toolBar.setBounds(0, 0, 450, 30);
 		getContentPane().add(toolBar);
-		
+
 		btnInicializar = new JButton("");
 		btnInicializar.setBorderPainted(false);
 		btnInicializar.setIcon(new ImageIcon(FrmMedicamento.class.getResource("/resource/img/page_white.png")));
 		toolBar.add(btnInicializar);
-		
+
 		btnGravar = new JButton("");
 		btnGravar.setBorderPainted(false);
 		btnGravar.setIcon(new ImageIcon(FrmMedicamento.class.getResource("/resource/img/disk.png")));
 		toolBar.add(btnGravar);
-		
+
 		btnExcluir = new JButton("");
 		btnExcluir.setBorderPainted(false);
 		btnExcluir.setIcon(new ImageIcon(FrmMedicamento.class.getResource("/resource/img/cross.png")));
 		toolBar.add(btnExcluir);
-		
+
 		btnRelatorio = new JButton("");
 		btnRelatorio.setBorderPainted(false);
 		btnRelatorio.setIcon(new ImageIcon(FrmMedicamento.class.getResource("/resource/img/page.png")));
 		toolBar.add(btnRelatorio);
-		
+
 		pnlDados = new JPanel();
 		pnlDados.setBorder(new TitledBorder(null, "Dados", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLUE));
 		pnlDados.setBounds(10, 40, 430, 100);
 		getContentPane().add(pnlDados);
 		pnlDados.setLayout(null);
-		
+
 		lblNome = new JLabel("Nome:");
 		lblNome.setBounds(20, 30, 46, 25);
 		pnlDados.add(lblNome);
-		
+
 		txtNome = new JTextField();
 		txtNome.setBounds(20, 60, 360, 25);
 		pnlDados.add(txtNome);
 		txtNome.setColumns(10);
-		
+
 		pnlRegistros = new JPanel();
-		pnlRegistros.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Registros", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLUE));
+		pnlRegistros.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Registros",
+				TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLUE));
 		pnlRegistros.setBounds(10, 150, 430, 234);
 		getContentPane().add(pnlRegistros);
 		pnlRegistros.setLayout(null);
-		
+
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(20, 63, 390, 160);
 		pnlRegistros.add(scrollPane);
-		
+
 		table = new JTable();
 		scrollPane.setViewportView(table);
-		
+
 		txtFiltro = new JTextField();
 		txtFiltro.setBounds(20, 30, 220, 25);
 		pnlRegistros.add(txtFiltro);
 		txtFiltro.setColumns(10);
-		
+
 		btnFiltrar = new JButton("");
 		btnFiltrar.setIcon(new ImageIcon(FrmMedicamento.class.getResource("/resource/img/find.png")));
 		btnFiltrar.setBounds(245, 29, 23, 25);
@@ -213,5 +215,5 @@ public class FrmMedicamento extends JInternalFrame {
 	public void setTxtFiltro(JTextField txtFiltro) {
 		this.txtFiltro = txtFiltro;
 	}
-	
+
 }

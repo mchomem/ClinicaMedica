@@ -1,19 +1,20 @@
 package br.misael.clinicamedica.model.vo;
 
 public class VoReceituario {
-	
+
 	private VoAgendamento voAgendamento;
 	private VoMedicamento voMedicamento;
 	private String posologia;
-	
-	public VoReceituario() {}
-	
+
+	public VoReceituario() {
+	}
+
 	public VoReceituario(VoAgendamento voAgendamento, VoMedicamento voMedicamento, String posologia) {
-		
+
 		this.voAgendamento = voAgendamento;
 		this.voMedicamento = voMedicamento;
 		this.posologia = posologia;
-		
+
 	}
 
 	public VoAgendamento getVoAgendamento() {

@@ -35,7 +35,7 @@ public class FrmMenu extends JFrame {
 	 * Create the frame.
 	 */
 	public FrmMenu() {
-		
+
 		setTitle("Cl\u00EDnica m\u00E9dica");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, dimension.width, dimension.height);
@@ -43,46 +43,46 @@ public class FrmMenu extends JFrame {
 		pnl.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(pnl);
 		pnl.setLayout(null);
-		
+
 		desktopPane = new JDesktopPane();
 		desktopPane.setBounds(0, 30, this.getWidth(), this.getHeight());
 		desktopPane.setBackground(Color.GRAY);
 		pnl.add(desktopPane);
-		
+
 		mnbMenu = new JMenuBar();
 		mnbMenu.setBounds(0, 0, this.getWidth(), 30);
 		pnl.add(mnbMenu);
-		
+
 		mnSistema = new JMenu("Sistema");
 		mnbMenu.add(mnSistema);
-		
+
 		mntmSair = new JMenuItem("Sair");
 		mnSistema.add(mntmSair);
-		
+
 		mnCadastros = new JMenu("Cadastros");
 		mnbMenu.add(mnCadastros);
-		
+
 		mntmPaciente = new JMenuItem("Paciente");
 		mnCadastros.add(mntmPaciente);
-		
+
 		mntmMedicamento = new JMenuItem("Medicamento");
 		mnCadastros.add(mntmMedicamento);
-		
+
 		mntmAgendamento = new JMenuItem("Agendamento");
 		mnCadastros.add(mntmAgendamento);
-		
+
 		separator = new JSeparator();
 		mnCadastros.add(separator);
-		
+
 		mntmRegistroDeConsulta = new JMenuItem("Registro de Consulta");
 		mnCadastros.add(mntmRegistroDeConsulta);
-		
+
 		mnConsultas = new JMenu("Consultas");
 		mnbMenu.add(mnConsultas);
-		
+
 		mntmHistrico = new JMenuItem("Hist\u00F3rico");
 		mnConsultas.add(mntmHistrico);
-		
+
 		setVisible(true);
 	}
 
