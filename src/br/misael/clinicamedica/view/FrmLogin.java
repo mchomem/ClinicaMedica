@@ -1,7 +1,6 @@
 package br.misael.clinicamedica.view;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
