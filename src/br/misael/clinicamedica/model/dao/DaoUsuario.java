@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import br.misael.clinicamedica.model.vo.VoMedicamento;
 import br.misael.clinicamedica.model.vo.VoUsuario;
 
 public class DaoUsuario {
@@ -48,7 +46,7 @@ public class DaoUsuario {
 		while (rs.next()) {
 			VoUsuario voUsuario = new VoUsuario();
 			voUsuario.setIdUsuario(rs.getLong("ID_USUARIO"));
-			voUsuario.setLogin (rs.getString("LOGIN"));
+			voUsuario.setLogin(rs.getString("LOGIN"));
 			voUsuario.setAtivo(rs.getBoolean("ATIVO"));
 
 			usuarios.add(voUsuario);
@@ -58,27 +56,26 @@ public class DaoUsuario {
 
 		return usuarios;
 	}
-	
+
 	public VoUsuario consultarLogin(String login, String password) throws ClassNotFoundException, SQLException {
 		Connection conn = dao.conectar();
 		PreparedStatement pstm = null;
 		VoUsuario usuario = null;
 		ResultSet rs = null;
 		pstm = conn.prepareStatement("SELECT ID_USUARIO, LOGIN, ATIVO FROM USUARIO WHERE LOGIN = ? AND PASSWORD = ?");
-		pstm.setString(1,login);
+		pstm.setString(1, login);
 		pstm.setString(2, password);
 		rs = pstm.executeQuery();
-		
+
 		while (rs.next()) {
 			usuario = new VoUsuario();
 			usuario.setIdUsuario(rs.getLong("ID_USUARIO"));
 			usuario.setLogin(rs.getString("LOGIN"));
 			usuario.setAtivo(rs.getBoolean("ATIVO"));
 		}
-		
+
 		dao.desconectar(conn, pstm, rs);
-		
+
 		return usuario;
 	}
-
 }
