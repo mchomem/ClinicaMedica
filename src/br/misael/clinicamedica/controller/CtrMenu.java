@@ -16,7 +16,6 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import br.misael.clinicamedica.view.FrmLogin;
 import br.misael.clinicamedica.view.FrmMenu;
 
 public class CtrMenu implements ActionListener, ComponentListener {
