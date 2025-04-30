@@ -31,6 +31,7 @@ public class FrmHistorico extends JInternalFrame {
 	private JRadioButton rdbtnNaoFinalizada;
 	private JRadioButton rdbtnTodos;
 	private ButtonGroup buttonGroupFinalizada;
+	private JLabel labelTotalRegistros;
 	
 	public FrmHistorico() {
 		setClosable(true);
@@ -79,11 +80,15 @@ public class FrmHistorico extends JInternalFrame {
 		panelFiltros.add(btnFiltrar);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 29, 912, 397);
+		scrollPane.setBounds(10, 69, 912, 357);
 		panelRegistros.add(scrollPane);
 
 		table = new JTable();
 		scrollPane.setViewportView(table);
+		
+		labelTotalRegistros = new JLabel("New label");
+		labelTotalRegistros.setBounds(14, 32, 286, 14);
+		panelRegistros.add(labelTotalRegistros);
 		setVisible(true);
 
 		buttonGroupFinalizada = new ButtonGroup();
@@ -122,6 +127,14 @@ public class FrmHistorico extends JInternalFrame {
 
 	public void setTable(JTable table) {
 		this.table = table;
+	}
+	
+	public JLabel getLabelTotalRegistros() {
+		return labelTotalRegistros;
+	}
+	
+	public void setLabelTotalRegistros(JLabel labelTotalRegistros) {
+		this.labelTotalRegistros = labelTotalRegistros;
 	}
 	
 	public JLabel getLabelNomePaciente() {

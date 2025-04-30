@@ -106,11 +106,22 @@ public class CtrHistorico implements ActionListener, InternalFrameListener {
 			}
 
 			if (registroConsultaFiltrado != null) {
-
 				this.frmHistorico.getTable().setModel(new TblHistorico(registroConsultaFiltrado));
 				this.frmHistorico.getTable().setDefaultRenderer(Object.class, new CelTblHistorico());
-
 			}
+			
+			int total = registroConsultaFiltrado.size();
+			String mensagem = "";
+			
+			if(total == 0) {
+				mensagem = "Nenhum registro localizado";
+			} else if(total > 1) {
+				mensagem = "Foram localizados " + total + " registros";
+			} else {
+				mensagem = "Foi localizado " + total +" registro";
+			}
+			
+			this.frmHistorico.getLabelTotalRegistros().setText(mensagem);
 
 		} catch (ClassNotFoundException e) {
 			JOptionPane.showMessageDialog(this.frmHistorico, "Erro ao consultar.\n\nDetalhes: " + e.getMessage(),
