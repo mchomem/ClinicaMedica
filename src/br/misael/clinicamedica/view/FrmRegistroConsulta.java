@@ -89,22 +89,22 @@ public class FrmRegistroConsulta extends JInternalFrame {
 		pnlDados.setLayout(null);
 
 		lblAgendamento = new JLabel("Agendamento:");
-		lblAgendamento.setBounds(10, 30, 87, 25);
+		lblAgendamento.setBounds(10, 30, 104, 25);
 		pnlDados.add(lblAgendamento);
 
 		cbAgedamento = new JComboBox<Object>();
 		cbAgedamento.setEditable(true);
-		cbAgedamento.setBounds(103, 30, 404, 25);
+		cbAgedamento.setBounds(124, 30, 383, 25);
 		pnlDados.add(cbAgedamento);
 
 		lblProntuario = new JLabel("Prontu\u00E1rio:");
-		lblProntuario.setBounds(10, 70, 87, 25);
+		lblProntuario.setBounds(10, 70, 104, 25);
 		pnlDados.add(lblProntuario);
 
 		scrollPaneProntuario = new JScrollPane();
 		scrollPaneProntuario.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPaneProntuario.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scrollPaneProntuario.setBounds(103, 70, 699, 76);
+		scrollPaneProntuario.setBounds(124, 70, 678, 76);
 		pnlDados.add(scrollPaneProntuario);
 
 		txtaProntuario = new JTextArea();
@@ -119,36 +119,36 @@ public class FrmRegistroConsulta extends JInternalFrame {
 		pnlDados.add(lblConsultaFinalizada);
 
 		lblReceituario = new JLabel("Receitu\u00E1rio:");
-		lblReceituario.setBounds(10, 160, 87, 25);
+		lblReceituario.setBounds(398, 165, 87, 25);
 		pnlDados.add(lblReceituario);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(103, 160, 311, 107);
+		scrollPane.setBounds(491, 165, 311, 107);
 		pnlDados.add(scrollPane);
 
 		tableReceituario = new JTable();
 		scrollPane.setViewportView(tableReceituario);
 
 		lblMedicamento = new JLabel("Medicamento:");
-		lblMedicamento.setBounds(431, 160, 100, 25);
+		lblMedicamento.setBounds(13, 165, 101, 25);
 		pnlDados.add(lblMedicamento);
 
 		cbMedicamento = new JComboBox<Object>();
-		cbMedicamento.setBounds(537, 160, 265, 28);
+		cbMedicamento.setBounds(124, 163, 151, 28);
 		pnlDados.add(cbMedicamento);
 
 		btnAdicionar = new JButton("");
 		btnAdicionar.setIcon(new ImageIcon(FrmRegistroConsulta.class.getResource("/resource/img/add.png")));
 		btnAdicionar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnAdicionar.setMargin(new Insets(0, 0, 0, 0));
-		btnAdicionar.setBounds(428, 244, 25, 23);
+		btnAdicionar.setBounds(288, 165, 25, 23);
 		pnlDados.add(btnAdicionar);
 
 		btnRemover = new JButton("");
 		btnRemover.setIcon(new ImageIcon(FrmRegistroConsulta.class.getResource("/resource/img/delete.png")));
 		btnRemover.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnRemover.setMargin(new Insets(0, 0, 0, 0));
-		btnRemover.setBounds(463, 244, 25, 23);
+		btnRemover.setBounds(323, 165, 25, 23);
 		pnlDados.add(btnRemover);
 
 		pnlRegistros = new JPanel();

@@ -365,9 +365,7 @@ public class CtrRegistroConsulta implements ActionListener, KeyListener, Interna
 		// TODO revisar recurso
 		/*
 		 * Trocar compoente JComboBox por JList para medicamentos já cadastrados no
-		 * banco. A lista de medicamsentos disponívels deve estar a esquerda e não a
-		 * direita
-		 * 
+		 * banco.
 		 */
 
 		// TODO Falha ao incerir medicamento na lista, tentativa de edição da célula

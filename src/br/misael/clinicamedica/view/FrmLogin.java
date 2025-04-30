@@ -26,10 +26,9 @@ public class FrmLogin extends JFrame {
 
 	public FrmLogin() {
 		setTitle("Clínica Médica - Login");
-		setAlwaysOnTop(true);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 324);
 		this.setLocation((this.dimension.width - this.getWidth()) / 2, (this.dimension.height - this.getHeight()) / 2);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -54,11 +53,11 @@ public class FrmLogin extends JFrame {
 		textFieldLogin.setColumns(10);
 
 		btnAcessar = new JButton("Acessar");
-		btnAcessar.setBounds(93, 210, 111, 23);
+		btnAcessar.setBounds(93, 233, 111, 23);
 		contentPane.add(btnAcessar);
 
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(223, 210, 111, 23);
+		btnCancelar.setBounds(223, 233, 111, 23);
 		contentPane.add(btnCancelar);
 
 		labelImage = new JLabel("");

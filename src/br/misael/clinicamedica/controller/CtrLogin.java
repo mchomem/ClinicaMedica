@@ -9,6 +9,7 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
+import br.misael.clinicamedica.model.Utils;
 import br.misael.clinicamedica.model.dao.DaoUsuario;
 import br.misael.clinicamedica.model.vo.VoUsuario;
 import br.misael.clinicamedica.view.FrmLogin;
@@ -23,10 +24,17 @@ public class CtrLogin implements ActionListener, KeyListener {
 		this.frmLogin.setVisible(true);
 		this.frmLogin.getBtnAcessar().addActionListener(this);
 		this.frmLogin.getBtnCancelar().addActionListener(this);
+		this.frmLogin.getTextFieldLogin().addKeyListener(this);
+		this.frmLogin.getPasswordField().addKeyListener(this);
 	}
 
 	@Override
-	public void keyPressed(KeyEvent arg0) {
+	public void keyPressed(KeyEvent e) {
+		if (e.getSource() == this.frmLogin.getTextFieldLogin() || e.getSource() == this.frmLogin.getPasswordField()) {
+			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+				this.autorizar();
+			}
+		}
 	}
 
 	@Override
@@ -44,6 +52,7 @@ public class CtrLogin implements ActionListener, KeyListener {
 		}
 
 		if (e.getSource() == this.frmLogin.getBtnCancelar()) {
+			System.out.println("[" + new Utils().getDataHora() + "]: Saída do sistema.");
 			System.exit(0);
 		}
 	}

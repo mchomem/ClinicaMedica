@@ -24,28 +24,19 @@ public class CtrHistorico implements ActionListener, InternalFrameListener {
 	private DaoRegistroConsulta daoRegistroConsulta;
 
 	public CtrHistorico(FrmMenu frmMenu) {
-
 		this.frmHistorico = new FrmHistorico();
 		this.daoRegistroConsulta = new DaoRegistroConsulta();
-
 		this.frmHistorico.getBtnFiltrar().addActionListener(this);
-
 		this.frmHistorico.addInternalFrameListener(this);
-
 		frmMenu.getDesktopPane().add(this.frmHistorico);
 		frmMenu.getDesktopPane().selectFrame(true);
-
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
 		if (e.getSource() == this.frmHistorico.getBtnFiltrar()) {
-
 			this.atualizarJTable();
-
 		}
-
 	}
 
 	@Override
@@ -70,9 +61,7 @@ public class CtrHistorico implements ActionListener, InternalFrameListener {
 
 	@Override
 	public void internalFrameActivated(InternalFrameEvent e) {
-
 		this.atualizarJTable();
-
 	}
 
 	@Override
@@ -80,12 +69,11 @@ public class CtrHistorico implements ActionListener, InternalFrameListener {
 	}
 
 	private void atualizarJTable() {
-
 		try {
 
 			voRegistroConsultas = daoRegistroConsulta.consultar();
 
-			String filtroNome = this.frmHistorico.getTxtFiltro().getText().toUpperCase();
+			String filtroNome = this.frmHistorico.getTextNomePaciente().getText().toUpperCase();
 			List<VoRegistroConsulta> registroConsultaFiltrado = new ArrayList<VoRegistroConsulta>();
 
 			if (this.frmHistorico.getRdbtnFinalizada().isSelected()) {
@@ -125,17 +113,12 @@ public class CtrHistorico implements ActionListener, InternalFrameListener {
 			}
 
 		} catch (ClassNotFoundException e) {
-
 			JOptionPane.showMessageDialog(this.frmHistorico, "Erro ao consultar.\n\nDetalhes: " + e.getMessage(),
 					"Erro", JOptionPane.ERROR_MESSAGE);
 
 		} catch (SQLException e) {
-
 			JOptionPane.showMessageDialog(this.frmHistorico, "Erro ao consultar.\n\nDetalhes: " + e.getMessage(),
 					"Erro", JOptionPane.ERROR_MESSAGE);
-
 		}
-
 	}
-
 }

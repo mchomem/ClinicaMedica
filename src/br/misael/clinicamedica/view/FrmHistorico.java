@@ -14,76 +14,82 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JRadioButton;
+import javax.swing.JLabel;
 
 public class FrmHistorico extends JInternalFrame {
 
 	private static final long serialVersionUID = 3089016848116712919L;
 	private Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-	private JPanel panel;
+	private JPanel panelFiltros; 
+	private JPanel panelRegistros;
 	private JScrollPane scrollPane;
 	private JTable table;
-	private JTextField txtFiltro;
+	private JLabel labelNomePaciente;
+	private JTextField textNomePaciente;
 	private JButton btnFiltrar;
 	private JRadioButton rdbtnFinalizada;
 	private JRadioButton rdbtnNaoFinalizada;
 	private JRadioButton rdbtnTodos;
 	private ButtonGroup buttonGroupFinalizada;
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public FrmHistorico() {
-
 		setClosable(true);
 		setTitle("Hist\u00F3rico");
 		setBounds(100, 100, 968, 600);
-		// setLocation((dimension.width - this.getWidth()) / 2, (dimension.height -
-		// this.getHeight()) / 2 );
 		setLocation((dimension.width - this.getWidth()) / 2, 50);
 		getContentPane().setLayout(null);
 
-		panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "Registros", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLUE));
-		panel.setBounds(10, 11, 932, 548);
-		getContentPane().add(panel);
-		panel.setLayout(null);
+		panelFiltros = new JPanel();
+		panelFiltros.setBorder(new TitledBorder(null, "Filtros", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLUE));
+		panelFiltros.setBounds(10, 11, 932, 100);
+		getContentPane().add(panelFiltros);
+		panelFiltros.setLayout(null);
+		
+		panelRegistros = new JPanel();
+		panelRegistros.setBorder(new TitledBorder(null, "Registros", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLUE));
+		panelRegistros.setBounds(10, 122, 932, 437);
+		getContentPane().add(panelRegistros);
+		panelRegistros.setLayout(null);
+		
+		 labelNomePaciente = new JLabel("Nome paciente:");
+		labelNomePaciente.setBounds(10, 35, 97, 14);
+		panelFiltros.add(labelNomePaciente);
+		
+		textNomePaciente = new JTextField();
+		textNomePaciente.setColumns(10);
+		textNomePaciente.setBounds(133, 30, 257, 25);
+		panelFiltros.add(textNomePaciente);
+		
+		rdbtnFinalizada = new JRadioButton("Finalizada");
+		rdbtnFinalizada.setBounds(443, 30, 109, 23);
+		panelFiltros.add(rdbtnFinalizada);
+		
+		rdbtnNaoFinalizada = new JRadioButton("N\u00E3o finalizada");
+		rdbtnNaoFinalizada.setBounds(581, 30, 109, 23);
+		panelFiltros.add(rdbtnNaoFinalizada);
+		
+		rdbtnTodos = new JRadioButton("Todos");
+		rdbtnTodos.setSelected(true);
+		rdbtnTodos.setBounds(714, 30, 109, 23);
+		panelFiltros.add(rdbtnTodos);
+		
+		btnFiltrar = new JButton("");
+		btnFiltrar.setIcon(new ImageIcon(FrmHistorico.class.getResource("/resource/img/find.png")));
+		btnFiltrar.setBounds(897, 31, 23, 25);
+		panelFiltros.add(btnFiltrar);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 66, 912, 471);
-		panel.add(scrollPane);
+		scrollPane.setBounds(10, 29, 912, 397);
+		panelRegistros.add(scrollPane);
 
 		table = new JTable();
 		scrollPane.setViewportView(table);
-
-		txtFiltro = new JTextField();
-		txtFiltro.setBounds(10, 31, 205, 25);
-		panel.add(txtFiltro);
-		txtFiltro.setColumns(10);
-
-		btnFiltrar = new JButton("");
-		btnFiltrar.setIcon(new ImageIcon(FrmHistorico.class.getResource("/resource/img/find.png")));
-		btnFiltrar.setBounds(899, 31, 23, 25);
-		panel.add(btnFiltrar);
-
-		rdbtnFinalizada = new JRadioButton("Finalizada");
-		rdbtnFinalizada.setBounds(274, 32, 109, 23);
-		panel.add(rdbtnFinalizada);
-
-		rdbtnNaoFinalizada = new JRadioButton("N\u00E3o finalizada");
-		rdbtnNaoFinalizada.setBounds(412, 32, 109, 23);
-		panel.add(rdbtnNaoFinalizada);
-
-		rdbtnTodos = new JRadioButton("Todos");
-		rdbtnTodos.setSelected(true);
-		rdbtnTodos.setBounds(545, 32, 109, 23);
-		panel.add(rdbtnTodos);
 		setVisible(true);
 
 		buttonGroupFinalizada = new ButtonGroup();
 		buttonGroupFinalizada.add(rdbtnFinalizada);
 		buttonGroupFinalizada.add(rdbtnNaoFinalizada);
 		buttonGroupFinalizada.add(rdbtnTodos);
-
 	}
 
 	public Dimension getDimension() {
@@ -95,11 +101,11 @@ public class FrmHistorico extends JInternalFrame {
 	}
 
 	public JPanel getPanel() {
-		return panel;
+		return panelRegistros;
 	}
 
 	public void setPanel(JPanel panel) {
-		this.panel = panel;
+		this.panelRegistros = panel;
 	}
 
 	public JScrollPane getScrollPane() {
@@ -117,13 +123,21 @@ public class FrmHistorico extends JInternalFrame {
 	public void setTable(JTable table) {
 		this.table = table;
 	}
-
-	public JTextField getTxtFiltro() {
-		return txtFiltro;
+	
+	public JLabel getLabelNomePaciente() {
+		return labelNomePaciente;
+	}
+	
+	public void  setLabelNomePaciente(JLabel labelNomePaciente) {
+		this.labelNomePaciente = labelNomePaciente;
 	}
 
-	public void setTxtFiltro(JTextField txtFiltro) {
-		this.txtFiltro = txtFiltro;
+	public JTextField getTextNomePaciente() {
+		return textNomePaciente;
+	}
+
+	public void setTextNomePaciente(JTextField txtFiltro) {
+		this.textNomePaciente = txtFiltro;
 	}
 
 	public JButton getBtnFiltrar() {
